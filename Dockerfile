@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:latest
 MAINTAINER Corbin Uselton <corbinu@decimal.io>
 
 ENV TERM xterm
