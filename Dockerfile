@@ -10,8 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN mkdir -p /var/run/sshd \
   && mkdir /root/.ssh \
-  && chmod 700 /root/.ssh \
-  && echo "${{ secrets.PUB_KEY }}" >> /root/.ssh/authorized_keys
+  && chmod 700 /root/.ssh
 
 COPY bin/* /usr/local/bin/
 COPY sshd_config /etc/ssh/sshd_config
