@@ -27,4 +27,4 @@ jobs:
             . -f Dockerfile -t ssh-server:$(date +%s)
         - name: push the docker image
           id: push-docker-image
-          run: docker push larrxi/ssh-server:latest
+          run: docker push ssh-server:latest
