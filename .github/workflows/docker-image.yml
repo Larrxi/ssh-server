@@ -23,7 +23,7 @@ jobs:
           id: build-docker-image
           run: |
             docker build \
-            --build-arg "PUB_KEY=${{ secrets.PUB_KEY }}"
+            --build-arg "PUB_KEY=${{ secrets.PUB_KEY }}" \
             . -f Dockerfile -t ssh-server:$(date +%s)
         - name: push the docker image
           id: push-docker-image
