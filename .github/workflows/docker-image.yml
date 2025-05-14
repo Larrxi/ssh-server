@@ -5,6 +5,8 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+env:
+  PUB_KEY: '${{ secrets.PUB_KEY }}'
 
 jobs:
     build:
@@ -23,7 +25,7 @@ jobs:
           id: build-docker-image
           run: |
             docker build \
-            --build-arg "PUB_KEY=${{ secrets.PUB_KEY }}" \
+            --build-arg PUB_KEY=$PUB_KEY \
             . -f Dockerfile -t larrxi/ssh-server:latest
         - name: push the docker image
           id: push-docker-image
