@@ -1,0 +1,29 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+    build:
+      name: push docker image to docker hub
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - name: login to docker hub
+          id: docker-hub
+          env:
+            username: ${{secrets.DOCKER_USER}}
+            password: ${{secrets.DOCKER_PASSWORD}}
+          run: |
+            docker login -u $username -p $password 
+        - name: build the docker image
+          id: build-docker-image
+          run: |
+            ls -la 
+            docker build . -f Dockerfile -t ssh-server:$(date +%s)
+        - name: push the docker image
+          id: push-docker-image
+          run: docker push ${{secrets.DOCKER_USER}}/ssh-server:$(date +%s)
