@@ -2,9 +2,7 @@ FROM ubuntu:latest
 MAINTAINER Corbin Uselton <corbinu@decimal.io>
 
 
-ARG PUB_KEY=${PUB_KEY}
 ENV TERM xterm
-ENV PUB_KEY=${PUB_KEY}
 
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -15,7 +13,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN mkdir -p /var/run/sshd \
   && mkdir /root/.ssh \
   && chmod 600 /root/.ssh
-#  && echo "$PUB_KEY" > /root/.ssh/authorized_keys
 
 COPY bin/* /usr/local/bin/
 COPY sshd_config /etc/ssh/sshd_config
