@@ -24,7 +24,7 @@ jobs:
         - name: build the docker image
           id: build-docker-image
           run: |
-            docker build --build-arg "PUB_KEY=$PUB_KEY" . -f Dockerfile -t larrxi/ssh-server:$(git rev-parse --short HEAD)
+            docker build --build-arg "PUB_KEY=$PUB_KEY" . -f Dockerfile -t larrxi/ssh-server:latest -t larrxi/ssh-server:$(git rev-parse --short HEAD)
         - name: push the docker image
           id: push-docker-image
           run: docker push larrxi/ssh-server:$(git rev-parse --short HEAD)
