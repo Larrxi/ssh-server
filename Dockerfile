@@ -12,9 +12,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /var/run/sshd
-#  && mkdir /root/.ssh \
-#  && chmod 700 /root/.ssh \
+RUN mkdir -p /var/run/sshd \
+  && mkdir /root/.ssh \
+  && chmod 700 /root/.ssh
 #  && echo "$PUB_KEY" > /root/.ssh/authorized_keys
 
 COPY bin/* /usr/local/bin/
