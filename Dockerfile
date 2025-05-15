@@ -8,6 +8,7 @@ ENV PUB_KEY=${PUB_KEY}
 
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    rsyslog \
     openssh-server \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
